@@ -5,6 +5,13 @@ import (
 	"math"
 )
 
+type Incrementor_type interface {
+	NewIncrementor() *Incrementor
+	getNumber() int
+	IncrementNumber()
+	setMaximumValue(maximumValue int)
+}
+
 type Incrementor struct {
 	count    int
 	maxCount int
@@ -23,7 +30,7 @@ func (inc *Incrementor) getNumber() int {
 
 // Adds the value of count by 1. Before doing this, it checks if the value has reached the maximum value. If yes - count=0
 func (inc *Incrementor) incrementNumber() {
-	if inc.count == math.MaxUint64 {
+	if inc.count == inc.maxCount {
 		inc.count = 0
 		return
 	}
@@ -37,5 +44,5 @@ func (inc *Incrementor) setMaximumValue(maximumValue int) {
 		log.Print("failed to set a maximum value: the value must be more than 0")
 		return
 	}
-	maximumValue = inc.maxCount
+	inc.maxCount = maximumValue
 }
