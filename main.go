@@ -1,42 +1,41 @@
 package main
 
 import (
-	"fmt"
+	"log"
 	"math"
 )
 
 type Incrementor struct {
-	count     int
-	max_count int
+	count    int64
+	maxCount int64
 }
 
-func init_Incrementor() *Incrementor {
-	struc := &Incrementor{count: 0, max_count: math.MaxInt}
-	return struc
+// Used to add default values
+func NewIncrementor() *Incrementor {
+	incrementor := &Incrementor{count: 0, maxCount: math.MaxInt}
+	return incrementor
 }
 
-func (inc *Incrementor) getNumber() int {
+// Returns the current value of the variable count
+func (inc *Incrementor) getNumber() int64 {
 	return inc.count
 }
 
+// Adds the value of count by 1. Before doing this, it checks if the value has reached the maximum value. If yes - count=0
 func (inc *Incrementor) incrementNumber() {
-	if inc.count == inc.max_count {
+	if inc.count == math.MaxUint64 {
 		inc.count = 0
 		return
 	}
 	inc.count++
 }
 
-func (inc *Incrementor) setMaximumValue(maximumValue int) {
+// Changes the maximum value that can be for the count variable. Checks for negative numbers and 0
+func (inc *Incrementor) setMaximumValue(maximumValue int64) {
 
-	if maximumValue == 0 {
-		fmt.Println("value cannot be zero")
+	if maximumValue <= 0 {
+		log.Print("failed to set a maximum value: the value must be more than 0")
 		return
 	}
-}
-
-func main() {
-
-	// я не знаю как тут объявить объект структуры, потому что там вроде надо count вводить а он должен быть стандартный
-
+	maximumValue = inc.maxCount
 }
