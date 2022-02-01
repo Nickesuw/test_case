@@ -1,9 +1,18 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
 type Incrementor struct {
-	count int
+	count     int
+	max_count int
+}
+
+func init_Incrementor() *Incrementor {
+	struc := &Incrementor{count: 0, max_count: math.MaxInt}
+	return struc
 }
 
 func (inc *Incrementor) getNumber() int {
@@ -11,6 +20,10 @@ func (inc *Incrementor) getNumber() int {
 }
 
 func (inc *Incrementor) incrementNumber() {
+	if inc.count == inc.max_count {
+		inc.count = 0
+		return
+	}
 	inc.count++
 }
 
@@ -24,14 +37,6 @@ func (inc *Incrementor) setMaximumValue(maximumValue int) {
 
 func main() {
 
-	incrementor := Incrementor{
-		count: 10,
-	}
-	incrementor.setMaximumValue(0)
-
-	incrementor.getNumber()
-
-	incrementor.incrementNumber()
+	// я не знаю как тут объявить объект структуры, потому что там вроде надо count вводить а он должен быть стандартный
 
 }
-
