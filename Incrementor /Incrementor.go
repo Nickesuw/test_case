@@ -29,7 +29,12 @@ func (inc *IncrementorInt) getNumber() int {
 
 // Adds the value of count by 1. Before doing this, it checks if the value has reached the maximum value. If yes - count=0
 func (inc *IncrementorInt) incrementNumber() {
-	if inc.count == inc.maxCount {
+
+	if inc.count == math.MaxInt {
+		log.Print("failed to increment: int overflow")
+		return
+	}
+	if inc.count >= inc.maxCount {
 		inc.count = 0
 		return
 	}
