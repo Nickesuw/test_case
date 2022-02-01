@@ -6,8 +6,8 @@ import (
 )
 
 type Incrementor struct {
-	count    int64
-	maxCount int64
+	count    int
+	maxCount int
 }
 
 // Used to add default values
@@ -17,7 +17,7 @@ func NewIncrementor() *Incrementor {
 }
 
 // Returns the current value of the variable count
-func (inc *Incrementor) getNumber() int64 {
+func (inc *Incrementor) getNumber() int {
 	return inc.count
 }
 
@@ -31,7 +31,7 @@ func (inc *Incrementor) incrementNumber() {
 }
 
 // Changes the maximum value that can be for the count variable. Checks for negative numbers and 0
-func (inc *Incrementor) setMaximumValue(maximumValue int64) {
+func (inc *Incrementor) setMaximumValue(maximumValue int) {
 
 	if maximumValue <= 0 {
 		log.Print("failed to set a maximum value: the value must be more than 0")
