@@ -1,4 +1,4 @@
-package Incrementor_
+package Incrementor
 
 import (
 	"log"
@@ -17,7 +17,7 @@ type IncrementorInt struct {
 }
 
 // Used to add default values
-func NewIncrementor() *IncrementorInt {
+func NewIncrementorInt() *IncrementorInt {
 	Incrementor := &IncrementorInt{count: 0, maxCount: math.MaxInt}
 	return Incrementor
 }
@@ -38,7 +38,6 @@ func (inc *IncrementorInt) incrementNumber() {
 
 // Changes the maximum value that can be for the count variable. Checks for negative numbers and 0
 func (inc *IncrementorInt) setMaximumValue(maximumValue int) {
-
 	if maximumValue <= 0 {
 		log.Print("failed to set a maximum value: the value must be more than 0")
 		return
