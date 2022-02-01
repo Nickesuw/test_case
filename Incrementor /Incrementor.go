@@ -14,12 +14,18 @@ type Incrementor interface {
 type IncrementorInt struct {
 	count    int
 	maxCount int
+	err      error
 }
 
 // Used to add default values
 func NewIncrementorInt() *IncrementorInt {
 	Incrementor := &IncrementorInt{count: 0, maxCount: math.MaxInt}
 	return Incrementor
+}
+
+// As the methods of interface Incrementor have no errors to return, we have to create a custom method
+func (inc *IncrementorInt) GetError() error {
+	return inc.err
 }
 
 // Returns the current value of the variable count
